@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEP-R · Login</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body class="login-body">
+  <main class="login-shell">
+    <section class="login-card">
+      <div class="login-brand">
+        <img src="/logo.jpeg" alt="Logo" class="login-logo" onerror="this.style.display='none'">
+        <div>
+          <h1>PEP-R</h1>
+          <p>Perfil Psicoeducacional Revisado</p>
+        </div>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <div>
+          <label for="username">Usuário</label>
+          <input id="username" name="username" type="text" autocomplete="username" required>
+        </div>
+        <div>
+          <label for="password">Senha</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="primary-btn">Entrar</button>
+        <p id="loginMessage" class="login-message"></p>
+      </form>
+    </section>
+  </main>
+  <script>
+    const form = document.getElementById('loginForm');
+    const msg = document.getElementById('loginMessage');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = 'Validando acesso...';
+      const payload = Object.fromEntries(new FormData(form).entries());
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        msg.textContent = data.message || 'Falha no login.';
+        return;
+      }
+      window.location.href = data.redirect;
+    });
+  </script>
+</body>
+</html>
