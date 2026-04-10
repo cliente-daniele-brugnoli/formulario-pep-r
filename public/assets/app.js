@@ -234,7 +234,7 @@ function buildHeader(titleRight = '', badgeHtml = '', showBadge = true) {
   return `
     <div class="ph">
       <div class="logo-box logo-box--image">
-        <img src="https://raw.githubusercontent.com/cliente-daniele-brugnoli/formulario-pep-r/main/logo.jpeg" alt="Logo" class="logo-img">
+        <img src="https://raw.githubusercontent.com/cliente-daniele-brugnoli/formulario-pep-r/main/logo.jpeg" alt="Logo" style="display:block !important; width:220px !important; height:auto !important; max-width:none !important; opacity:1 !important; visibility:visible !important; border:2px solid red;">
       </div>
       <div class="ph-center">
         <div class="main">PEP-R</div>
