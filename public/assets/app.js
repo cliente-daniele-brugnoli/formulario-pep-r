@@ -234,7 +234,7 @@ function buildHeader(titleRight = '', badgeHtml = '', showBadge = true) {
   return `
     <div class="ph">
       <div class="logo-box logo-box--image">
-        <img src="/logo.jpeg" alt="Logo" class="logo-img" onerror="this.parentElement.classList.remove('logo-box--image'); this.remove();">
+        <img src="/logo.jpeg" alt="Logo" class="logo-img">
       </div>
       <div class="ph-center">
         <div class="main">PEP-R</div>
